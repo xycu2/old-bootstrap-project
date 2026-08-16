@@ -24,14 +24,10 @@
               <router-link to="/team" class="nav-link">Our Team</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" >RuStore</router-link>
+              <router-link to="/" class="nav-link" >RuStore</router-link>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 </template>
-
-<script setup>
-import { RouterLink } from 'vue-router';
-</script>
