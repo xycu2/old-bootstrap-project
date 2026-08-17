@@ -17,17 +17,24 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <router-link to="/" class="nav-link" aria-current="page">Home</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/team" class="nav-link">Our Team</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/" class="nav-link" >RuStore</router-link>
+            <li v-for="link in navStore.navLinks"
+                :key="link.id"
+                class="nav-item"
+                >
+                <router-link
+                :to='link.path',
+                class="nav-link"
+                >{{ link.name }}</router-link>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 </template>
+
+
+<script setup>
+import { useNavigationStore } from '@/store/navigation';
+
+const navStore = useNavigationStore()
+</script>
