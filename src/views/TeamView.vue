@@ -1,7 +1,12 @@
 <template>
   <div class="container my-5">
+    <div class="buttons">
+      <button @click="store.setRole('all')">ВСЕ</button>
+      <button @click="store.setRole('frontend')">Frontend</button>
+      <button @click="store.setRole('backend')">Backend</button>
+    </div>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
-      <TeamCard v-for="member in teamStore.members" :key="member.id" :member="member" />
+      <TeamCard v-for="member in store.filteredDevs" :key="member.id" :member="member" />
     </div>
   </div>
 </template>
@@ -11,7 +16,7 @@ import TeamCard from "@/components/TeamCard.vue";
 
 import { useTeamStore } from "@/store/team";
 
-const teamStore = useTeamStore()
+const store = useTeamStore()
 
 </script>
 
