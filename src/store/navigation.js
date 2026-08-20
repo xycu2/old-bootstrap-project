@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
+import { ref } from 'vue'
 
-export const useNavigationStore = defineStore('navigation', {
-  state: () => ({
-    navLinks: [
+export const useNavigationStore = defineStore('navigation', () => {
+  const navLinks = ref([
       {
         id: 1,
         path: '/',
@@ -18,6 +18,9 @@ export const useNavigationStore = defineStore('navigation', {
         path: '/',
         name: 'RuStore',
       }
-    ]
-  })
+    ])
+
+    return {
+      navLinks
+    }
 })
