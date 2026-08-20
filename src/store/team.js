@@ -1,10 +1,9 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
-export const useTeamStore = defineStore('team',{
-  state: () => ({
-    selectedRole: 'all',
-    members: [
+export const useTeamStore = defineStore('team', () => {
+  const selectedRole = ref('all')
+  const members = ref([
       {
     id: 0,
     avatar: "/xycu2.jpg",
@@ -41,24 +40,25 @@ export const useTeamStore = defineStore('team',{
     class: "btn-success",
     role: 'backend'
   },
-    ]
-  }),
-  getters: {
+    ])
 
-    filteredDevs: (state) => {
+  const filteredDevs = computed(() => {
 
-      if (state.selectedRole === 'all') {
-        return state.members
-      }
-
-      return state.members.filter(dev => dev.role === state.selectedRole)
+    if (selectedRole.value === 'all') {
+      return members.value
     }
-  },
 
-  actions: {
-    setRole(role) {
-      this.selectedRole = role
-    }
+    return members.value.filter(dev => dev.role === selectedRole.value)
+  } )
+
+  const setRole = (role) => {
+    selectedRole.value = role
   }
 
-})
+  return {
+    selectedRole,
+    members,
+    filteredDevs,
+    setRole
+  }
+}) 
