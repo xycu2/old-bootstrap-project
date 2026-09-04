@@ -1,9 +1,21 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 
+export type TeamRole = 'all' | 'backend' | 'frontend';
+
+export interface TeamMember {
+  id: number,
+  avatar: string,
+  title: string,
+  text: string,
+  link: string,
+  class: string,
+  role: string,
+}
+
 export const useTeamStore = defineStore('team', () => {
-  const selectedRole = ref('all')
-  const members = ref([
+  const selectedRole = ref<TeamRole>('all')
+  const members = ref<TeamMember[]>([
       {
     id: 0,
     avatar: "/xycu2.jpg",
@@ -51,7 +63,7 @@ export const useTeamStore = defineStore('team', () => {
     return members.value.filter(dev => dev.role === selectedRole.value)
   } )
 
-  const setRole = (role) => {
+  const setRole = (role: TeamRole) => {
     selectedRole.value = role
   }
 
