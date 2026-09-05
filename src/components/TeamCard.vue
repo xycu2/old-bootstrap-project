@@ -15,8 +15,10 @@
         </div>
 </template>
 
-<script setup>
-defineProps({
-  member: Object
-})
+<script setup lang="ts">
+import { TeamMember } from '@/store/team';
+
+defineProps<{
+  member: TeamMember
+}>()
 </script>

@@ -11,7 +11,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import TeamCard from "@/components/TeamCard.vue";
 
 import { useTeamStore } from "@/store/team";

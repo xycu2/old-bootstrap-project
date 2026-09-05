@@ -3,7 +3,7 @@
   <router-view/>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import NavBarComponent from './components/NavBarComponent.vue';
 
 </script>

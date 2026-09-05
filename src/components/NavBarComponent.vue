@@ -33,7 +33,7 @@
 </template>
 
 
-<script setup>
+<script setup lang="ts">
 import { useNavigationStore } from '@/store/navigation';
 
 const navStore = useNavigationStore()
